@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "campbot"
   gem.require_paths = ["lib"]
   gem.version       = Campbot::VERSION
+  gem.add_development_dependency "rspec"
+  gem.add_dependency "tinder"
 end
