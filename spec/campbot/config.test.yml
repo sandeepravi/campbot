@@ -1,0 +1,7 @@
+site: sourcebits 
+rooms:
+- Campfire Bot Discussion - Kannan's team
+api_key: your_api_key
+nickname: SomeBot
+fullname: Full Bot
+password: some_shit
