@@ -11,8 +11,8 @@ describe Campbot do
 
   describe "#initiliaze" do
     it "should initiaze a new object" do
-      @campbot = Campbot.new(@params)
-      @campbot.should be_an_instance_of(Campbot)
+      campbot = Campbot.new(@params)
+      campbot.should be_an_instance_of(Campbot)
     end
 
     it "should raise an error without token params" do
@@ -26,9 +26,9 @@ describe Campbot do
     end
 
     it "should load the configuration from the yml file" do
-      config = YAML::load(File.open('config.yml'))
-      config.should have_key("site")
-      config.should have_key("rooms")
+      campbot = Campbot.new(@params)
+      campbot.site.should_not be_nil
+      campbot.rooms.should_not be_nil
     end
 
   end
