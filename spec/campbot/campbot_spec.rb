@@ -1,4 +1,5 @@
 require "spec_helper"
+require "yaml"
 
 describe Campbot do
 
@@ -21,7 +22,13 @@ describe Campbot do
 
     it "should raise an error without subdomain params" do
       @params.delete(:subdomain)
-      expect { Campbot.new(@params) }.to raise_error("You must pass subdomain")
+      expect { Campbot.new(@params) }.to raise_error("You must pass a subdomain")
+    end
+
+    it "should load the configuration from the yml file" do
+      config = YAML::load(File.open('config.yml'))
+      config.should have_key("site")
+      config.should have_key("rooms")
     end
 
   end
