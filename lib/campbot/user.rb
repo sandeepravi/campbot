@@ -4,7 +4,7 @@ class Campbot
   #
   # Examples
   #
-  #   User.get_user
+  #   Campbot.get_user
   #   # => Campbot
   module User
 
@@ -12,12 +12,12 @@ class Campbot
     #
     # Returns the Campbot Object with @user set
     def get_user
-      request = Net::HTTP::Get.new('/users/me.json')
-      request.basic_auth @token, 'x'
-      http = Net::HTTP.new("#{@subdomain}.campfirenow.com", 443)
-      http.use_ssl = true
-      if data = http.request(request).body
-        @user = Yajl::Parser::parse(data)['user']
+      call = Net::HTTP::Get.new('/users/me.json')
+      call.basic_auth @token, 'x'
+      connection = Net::HTTP.new("#{@subdomain}.campfirenow.com", 443)
+      connection.use_ssl = true
+      if user = connection.request(call).body
+        @user = Yajl::Parser::parse(user)['user'] 
       end
       self
     end

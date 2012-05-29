@@ -2,6 +2,7 @@ require "campbot/version"
 require "yaml"
 require 'yajl'
 require "campbot/user"
+require "campbot/room"
 
 # Public: Contains all the methods are directly needed for Bot
 # 
@@ -12,8 +13,9 @@ require "campbot/user"
 class Campbot
 
   include User
+  include Room
 
-  attr_accessor :token, :subdomain, :rooms, :user
+  attr_accessor :token, :subdomain, :room, :user
 
   # Public: Initialize a Campbot
   #
@@ -26,15 +28,20 @@ class Campbot
 
     raise ArgumentError, "You must pass an API key" unless params[:token]
     raise ArgumentError, "You must pass a subdomain" unless params[:subdomain]
-    raise ArgumentError, "You need to pass the rooms I need to join" unless params[:rooms]
+    raise ArgumentError, "You need to pass the rooms I need to join" unless params[:room]
 
     params.each do |key, value|
       send("#{key}=", value)
     end
   end
 
+  # Public: Join the room and start listening to the conversation
+  #
+  # Returns the self (Campbot) Object
   def listen!
     get_user
+    join
+    self
   end
 
 end
