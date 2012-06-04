@@ -46,11 +46,6 @@ describe Campbot do
     it "should join the room specified" do
       @campbot.listen!.should_not be_nil
     end
-
-    it "should return an error for incorrect room" do
-      @params[:room] = 1
-      expect { Campbot.new(@params).listen! }.to raise_error("There was an error joining the room")
-    end
   end
 
 end

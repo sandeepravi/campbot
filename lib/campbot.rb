@@ -1,6 +1,8 @@
-require "campbot/version"
+require 'net/https'
 require "yaml"
 require 'yajl'
+
+require "campbot/version"
 require "campbot/user"
 require "campbot/room"
 

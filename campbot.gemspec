@@ -4,8 +4,8 @@ require File.expand_path('../lib/campbot/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Sandeep"]
   gem.email         = ["sandeep.ravichandran@sourcebits.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "Simple framework to write a campfire bot"
+  gem.summary       = "Simple framework to write a campfire bot"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
