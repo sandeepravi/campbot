@@ -12,6 +12,7 @@ class Campbot
     #
     # Returns the Campbot Object with @user set
     def get_user
+      puts "Getting user details....\n"
       call = Net::HTTP::Get.new('/users/me.json')
       call.basic_auth @token, 'x'
       connection = Net::HTTP.new("#{@subdomain}.campfirenow.com", 443)

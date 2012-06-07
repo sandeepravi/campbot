@@ -1,6 +1,6 @@
 require 'net/https'
 require "yaml"
-require 'yajl'
+require 'yajl/http_stream'
 
 require "campbot/version"
 require "campbot/user"
@@ -35,15 +35,26 @@ class Campbot
     params.each do |key, value|
       send("#{key}=", value)
     end
+
+    @user = {}
+    @behave = {}
   end
 
   # Public: Join the room and start listening to the conversation
   #
   # Returns the self (Campbot) Object
-  def listen!
+  def start!
     get_user
     join
+    puts "Started Listening...\n"
+    listen
     self
+  end
+
+  def hear(regex, &block)
+    @behave[regex] ||= []
+    @behave[regex] << block
+    puts @behave.inspect
   end
 
 end
