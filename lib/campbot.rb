@@ -5,6 +5,8 @@ require 'yajl/http_stream'
 require "campbot/version"
 require "campbot/user"
 require "campbot/room"
+require "campbot/message"
+require "campbot/action"
 
 # Public: Contains all the methods are directly needed for Bot
 # 
@@ -16,6 +18,8 @@ class Campbot
 
   include User
   include Room
+  include Message
+  include Action
 
   attr_accessor :token, :subdomain, :room, :user
 
@@ -51,10 +55,16 @@ class Campbot
     self
   end
 
-  def hear(regex, &block)
+  # Public: Used to parse the regex matchers
+  #
+  # params - A Hash containing:
+  #          :regex - The regex that needs to be matched with
+  #          :&block - The code block that needs to be evaluated
+  #
+  # Returns the self object and sets the @behave object
+  def check(regex, &block)
     @behave[regex] ||= []
     @behave[regex] << block
-    puts @behave.inspect
   end
 
 end
