@@ -31,6 +31,7 @@ class Campbot
 
         uri = URI.parse("http://#{@token}:x@streaming.campfirenow.com/room/#{@room}/live.json")
         Yajl::HttpStream.get(uri) do |item|
+          puts item
           parse(item)
         end
       end
