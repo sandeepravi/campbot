@@ -67,4 +67,8 @@ class Campbot
     @behave[regex] << block
   end
 
+  def behave(&block)
+    instance_eval &block
+  end
+
 end
