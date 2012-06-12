@@ -31,6 +31,11 @@ describe Campbot do
       expect { Campbot.new(@params) }.to raise_error("You must pass a subdomain")
     end
 
+    it "should raise an error without room params" do
+      @params.delete(:room)
+      expect { Campbot.new(@params) }.to raise_error("You need to pass the rooms I need to join")
+    end
+
     it "should set the accessor values based on params" do
       @campbot.subdomain.should eq(@params[:subdomain])
       @campbot.token.should eq(@params[:token])
@@ -38,13 +43,13 @@ describe Campbot do
     end
   end
 
-  describe "listen!" do
+  describe "listen" do
     it "should load the user details" do
-      @campbot.listen!.user.should_not be_nil
+      @campbot.listen.user.should_not be_nil
     end
 
     it "should join the room specified" do
-      @campbot.listen!.should_not be_nil
+      @campbot.listen.should_not be_nil
     end
   end
 
