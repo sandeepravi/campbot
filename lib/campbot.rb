@@ -9,7 +9,7 @@ require "campbot/message"
 require "campbot/action"
 
 # Public: Contains all the methods are directly needed for Bot
-# 
+#
 # Examples
 #
 #   Campbot.new(:token => "857987f9s879f8sd7f9s7f9sdf78", :subdomain => "xxxx")
@@ -67,6 +67,11 @@ class Campbot
     @behave[regex] << block
   end
 
+  # Public: To provide a nice DSL to write the behaviour
+  #
+  # params - :&block - The code block that needs to be evaluated
+  #
+  # Returns the evaluated code block
   def behave(&block)
     instance_eval &block
   end
