@@ -48,7 +48,9 @@ class Campbot
   #
   # Returns the self (Campbot) Object
   def start!
+    puts "Fetching User details...\n"
     get_user
+    puts "Joining Campfire Room...\n"
     join
     puts "Started Listening...\n"
     listen
